@@ -48,6 +48,9 @@ pip install uv
 ```bash
 # Install project dependencies
 uv sync
+
+# For PythonAnywhere deployment, also install:
+pip install asgiref
 ```
 
 ### 4. Run the Application
@@ -132,11 +135,31 @@ prompts-hub/
 
 ## Deployment
 
-### Replit (Recommended for MVP)
+### PythonAnywhere (Recommended - Free & Clean URLs)
+**Get a professional URL like `https://yourname.pythonanywhere.com`**
+
+1. **Create Account**: https://pythonanywhere.com (free Beginner account)
+2. **Upload Files**: Use file manager or `git clone https://github.com/kanishk-varshney/prompts-hub`
+3. **Install Dependencies**:
+   ```bash
+   pip install uv
+   uv sync
+   pip install asgiref  # For WSGI compatibility
+   ```
+4. **Create Web App**:
+   - Go to "Web" tab
+   - "Add a new web app" → "Manual configuration" → Python 3.12
+5. **Configure WSGI**:
+   - Edit the WSGI file
+   - Copy content from `wsgi.py` (replace `yourusername` with your actual username)
+6. **Set Working Directory**: `/home/yourusername/prompts-hub`
+7. **Reload** and get your clean URL!
+
+### Replit (Alternative)
 1. Create new Replit project
-2. Upload all files
-3. Run `python main.py`
-4. Access via Replit URL
+2. Import from GitHub: `https://github.com/kanishk-varshney/prompts-hub`
+3. Run `uv sync && python main.py`
+4. Access via Replit URL (may have random characters)
 
 ### Local Development
 ```bash
@@ -146,8 +169,8 @@ uv run main.py
 ### Production Deployment
 For production, consider:
 - **Supabase**: Replace SQLite with Supabase connection
+- **Railway**: Free tier with custom domains
 - **Vercel/Docker**: Containerize the app
-- **Railway/Fly.io**: Python hosting platforms
 
 ## Migration to Supabase
 
