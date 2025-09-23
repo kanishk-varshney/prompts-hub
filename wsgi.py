@@ -4,7 +4,7 @@ WSGI Configuration for PythonAnywhere Deployment
 
 import sys
 import os
-from a2wsgi import ASGItoWSGI  # <-- comes from a2wsgi package
+from a2wsgi import WSGIMiddleware
 
 # Path to your project directory
 project_dir = '/home/promptshub/prompts-hub'
@@ -19,4 +19,4 @@ os.chdir(project_dir)
 from main import app  # NiceGUI app is ASGI
 
 # Wrap ASGI app for WSGI server
-application = ASGItoWSGI(app)
+application = WSGIMiddleware(app)
