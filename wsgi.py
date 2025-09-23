@@ -1,26 +1,22 @@
 """
 WSGI Configuration for PythonAnywhere Deployment
-
-This file handles the ASGI-to-WSGI conversion needed for PythonAnywhere.
-Copy this file to your PythonAnywhere WSGI configuration.
 """
 
 import sys
 import os
-from asgiref.wsgi import WsgiToAsgi
+from asgi_wsgi import ASGItoWSGI  # <-- comes from asgi-wsgi package
 
-# Add your project directory to the Python path
-# IMPORTANT: Replace 'yourusername' with your actual PythonAnywhere username
+# Path to your project directory
 project_dir = '/home/promptshub/prompts-hub'
 
 if project_dir not in sys.path:
     sys.path.insert(0, project_dir)
 
-# Change to project directory
+# Change working directory
 os.chdir(project_dir)
 
 # Import your NiceGUI app
-from main import app
+from main import app  # NiceGUI app is ASGI
 
-# Convert ASGI to WSGI for PythonAnywhere (use the FastAPI app)
-application = WsgiToAsgi(app.fastapi_app)
+# Wrap ASGI app for WSGI server
+application = ASGItoWSGI(app)
