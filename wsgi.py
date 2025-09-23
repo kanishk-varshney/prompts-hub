@@ -11,7 +11,7 @@ from asgiref.wsgi import WsgiToAsgi
 
 # Add your project directory to the Python path
 # IMPORTANT: Replace 'yourusername' with your actual PythonAnywhere username
-project_dir = '/home/yourusername/prompts-hub'
+project_dir = '/home/promptshub/prompts-hub'
 
 if project_dir not in sys.path:
     sys.path.insert(0, project_dir)
@@ -22,5 +22,5 @@ os.chdir(project_dir)
 # Import your NiceGUI app
 from main import app
 
-# Convert ASGI to WSGI for PythonAnywhere
-application = WsgiToAsgi(app)
+# Convert ASGI to WSGI for PythonAnywhere (use the FastAPI app)
+application = WsgiToAsgi(app.fastapi_app)
