@@ -4,7 +4,7 @@ WSGI Configuration for PythonAnywhere Deployment
 
 import sys
 import os
-from asgi_wsgi import ASGItoWSGI  # <-- comes from asgi-wsgi package
+from a2wsgi import ASGItoWSGI  # <-- comes from a2wsgi package
 
 # Path to your project directory
 project_dir = '/home/promptshub/prompts-hub'

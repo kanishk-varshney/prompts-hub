@@ -10,7 +10,7 @@ dependencies = [
     "sqlmodel>=0.0.14",
     "uvicorn>=0.24.0",
     "asgiref>=3.7.0",
-    "asgi-wsgi>=0.1.0",
+    "a2wsgi>=1.0.0",
 ]
 
 [tool.uv]
