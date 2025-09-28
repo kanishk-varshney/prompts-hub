@@ -1,9 +1,11 @@
 services:
   - type: web
     name: prompts-hub
-    runtime: python3
-    buildCommand: uv sync
-    startCommand: uv run python main.py
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12
+      - key: DATABASE_URL
+        fromDatabase:
+          name: prompts-db
+          property: connectionString
