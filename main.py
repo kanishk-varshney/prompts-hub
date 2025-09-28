@@ -397,10 +397,13 @@ def apply_filters(model: str, tags: List[str], search: str):
 
 
 if __name__ in {"__main__", "__mp_main__"}:
-    # Configure NiceGUI
+    import os
+    # Configure NiceGUI for production
+    port = int(os.getenv("PORT", 8080))
     ui.run(
         title="Prompts Hub",
-        port=8080,
+        port=port,
+        host="0.0.0.0",  # Allow external connections
         show=False,  # Don't auto-open browser
         reload=False
     )

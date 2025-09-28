@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: prompts-hub
+    runtime: python3
+    buildCommand: uv sync
+    startCommand: uv run python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12
